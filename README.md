@@ -22,7 +22,7 @@ A simple command-line interface for interacting with OpenAI's ChatGPT.
 1. First, get the code:
    ```bash
    # Clone the repository
-   git clone https://github.com/yourusername/chatgpt-cli.git
+   git clone https://github.com/ayoola/chatgpt-cli.git
    # Or download and extract the ZIP file from the repository
    ```
 
