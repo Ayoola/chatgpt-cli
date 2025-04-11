@@ -6,6 +6,7 @@ A simple command-line interface for interacting with OpenAI's ChatGPT.
 
 - Interactive chat with ChatGPT
 - Maintains conversation context (ChatGPT remembers previous messages)
+- Markdown rendering in responses
 - Easy model switching
 - Available as a system-wide command
 

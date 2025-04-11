@@ -8,6 +8,7 @@ setup(
         "openai",
         "python-dotenv",
         "requests",
+        "rich",
     ],
     entry_points={
         'console_scripts': [

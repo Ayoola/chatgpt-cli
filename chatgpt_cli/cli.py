@@ -8,6 +8,8 @@ import sys
 import argparse
 from dotenv import load_dotenv
 from openai import OpenAI
+from rich.console import Console
+from rich.markdown import Markdown
 
 # Load environment variables from .env file
 load_dotenv()
@@ -21,6 +23,9 @@ if not api_key:
 
 # Initialize OpenAI client
 client = OpenAI(api_key=api_key)
+
+# Initialize Rich console
+console = Console()
 
 def get_chatgpt_response(messages, model="gpt-4o"):
     """
@@ -65,9 +70,11 @@ def interactive_mode(model="gpt-4o", initial_prompt=None):
     if initial_prompt:
         print(f"\nYou: {initial_prompt}")
         messages.append({"role": "user", "content": initial_prompt})
-        print("\nChatGPT: ", end="")
+        print("\nChatGPT: ")
         response = get_chatgpt_response(messages, current_model)
-        print(response)
+        # Render markdown
+        markdown = Markdown(response)
+        console.print(markdown)
         messages.append({"role": "assistant", "content": response})
     
     # Main conversation loop
@@ -100,9 +107,11 @@ def interactive_mode(model="gpt-4o", initial_prompt=None):
             messages.append({"role": "user", "content": user_input})
             
             # Get response from ChatGPT
-            print("\nChatGPT: ", end="")
+            print("\nChatGPT: ")
             response = get_chatgpt_response(messages, current_model)
-            print(response)
+            # Render markdown
+            markdown = Markdown(response)
+            console.print(markdown)
             
             # Add assistant response to history
             messages.append({"role": "assistant", "content": response})
